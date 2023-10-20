@@ -11,8 +11,8 @@ const projectsData = [
     description: "Project 1 description",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/Lokeshwar-V/Lokeshwar-portfolio.git",
+    previewUrl: "https://lokeshwar-portfolio.vercel.app/",
   },
 
   {
@@ -48,7 +48,7 @@ const projectsData = [
     description: "Weather App using Flutter",
     image: "/images/projects/6.png",
     tag: ["All", "Mobile"],
-    gitUrl: "/",
+    gitUrl: "https://github.com/Lokeshwar-V/Clima-Flutter.git",
     previewUrl: "/",
   },
 ];
