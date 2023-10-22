@@ -8,7 +8,10 @@ const projectsData = [
   {
     id: 1,
     title: "Next.js Portfolio Website",
-    description: "Project 1 description",
+    description: "Welcome to my personal website, where you can learn more about me and my projects. I am a web developer who loves to create responsive and interactive websites using modern technologies.
+My website is built with Next.js, a React framework that enables fast and scalable web development. Next.js allows me to use server-side rendering, static site generation, and  create dynamic and SEO-friendly pages.
+One of the features that I am proud of is the animation of numbers on my homepage. I used Framer Motion, a library for React that makes it easy to animate complex UI elements. Framer Motion lets me control the timing, easing, and transitions of the animations with simple props. I also used React CountUp, a component that animates the counting of numbers from zero to any value.
+I hope you enjoy browsing my website and feel free to contact me if you have any questions or feedback. Thank you for visiting!",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/Lokeshwar-V/Lokeshwar-portfolio.git",
@@ -27,7 +30,9 @@ const projectsData = [
   {
     id: 4,
     title: "Xylophone-Flutter ",
-    description: "Project 4 description",
+    description: "My xylophone app is built with Flutter, a cross-platform framework that allows me to create beautiful and responsive user interfaces. Flutter also provides many widgets and packages that make development easier and faster.
+One of the packages that I used in my app is Audio players, which enables me to play multiple audio files simultaneously. Audio players can play audio from different sources, such as remote files, local files, or local assets. In my app, I used local assets to store the sound files for each note.
+To create the buttons for the notes, I used FlatButton widget, which is a simple button that reacts to touches by filling with color. I also used SizedBox widget to adjust the size and spacing of the buttons. To arrange the buttons in a vertical column, I used Column widget, which is a layout widget that displays its children in a single line.",
     image: "/images/projects/4.png",
     tag: ["All", "Mobile"],
     gitUrl: "https://github.com/Lokeshwar-V/Xylophone-Flutter.git",
@@ -36,7 +41,7 @@ const projectsData = [
   {
     id: 5,
     title: "BMI-Calculator-Flutter ",
-    description: "Calculates BMI",
+    description: "Do you want to know your body mass index (BMI) and how it affects your health? Try this app, which is a simple and easy-to-use BMI calculator built with Flutter. You can enter your height and weight in metric units and get your BMI result instantly. The app also shows you a color-coded message that indicates whether you are underweight, normal, overweight, or obese according to the BMI ranges. You can also see the formula used to calculate the BMI and learn more about its meaning and limitations. This app is a great example of how to use Flutter to create a cross-platform application with a beautiful and responsive user interface. You can download the source code from GitHub",
     image: "/images/projects/5.png",
     tag: ["All", "Mobile"],
     gitUrl: "https://github.com/Lokeshwar-V/BMI-Calculator-Flutter.git",
@@ -45,7 +50,7 @@ const projectsData = [
   {
     id: 6,
     title: "Clima-Flutter",
-    description: "Weather App using Flutter",
+    description: "Climate is a beautiful and easy-to-use app that lets you check the current weather and forecast for any location on Earth. Built with Flutter, a powerful UI toolkit from Google, Climate delivers a smooth and native experience on any screen size and platform. Whether you need to plan your day, your week, or your next trip, Climate has you covered with reliable and accurate weather data from OpenWeatherMap, a leading provider of weather APIs.",
     image: "/images/projects/6.png",
     tag: ["All", "Mobile"],
     gitUrl: "https://github.com/Lokeshwar-V/Clima-Flutter.git",
