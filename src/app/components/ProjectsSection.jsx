@@ -8,10 +8,7 @@ const projectsData = [
   {
     id: 1,
     title: "Next.js Portfolio Website",
-    description: "Welcome to my personal website, where you can learn more about me and my projects. I am a web developer who loves to create responsive and interactive websites using modern technologies.
-My website is built with Next.js, a React framework that enables fast and scalable web development. Next.js allows me to use server-side rendering, static site generation, and  create dynamic and SEO-friendly pages.
-One of the features that I am proud of is the animation of numbers on my homepage. I used Framer Motion, a library for React that makes it easy to animate complex UI elements. Framer Motion lets me control the timing, easing, and transitions of the animations with simple props. I also used React CountUp, a component that animates the counting of numbers from zero to any value.
-I hope you enjoy browsing my website and feel free to contact me if you have any questions or feedback. Thank you for visiting!",
+    description: "Welcome to my personal website, where you can learn more about me and my projects. I am a web developer who loves to create responsive and interactive websites using modern technologies. My website is built with Next.js, a React framework that enables fast and scalable web development. Next.js allows me to use server-side rendering, static site generation, and  create dynamic and SEO-friendly pages.One of the features that I am proud of is the animation of numbers on my homepage. I used Framer Motion, a library for React that makes it easy to animate complex UI elements. Framer Motion lets me control the timing, easing, and transitions of the animations with simple props. I also used React CountUp, a component that animates the counting of numbers from zero to any value.I hope you enjoy browsing my website and feel free to contact me if you have any questions or feedback. Thank you for visiting!",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/Lokeshwar-V/Lokeshwar-portfolio.git",
