@@ -27,9 +27,7 @@ const projectsData = [
   {
     id: 4,
     title: "Xylophone-Flutter ",
-    description: "My xylophone app is built with Flutter, a cross-platform framework that allows me to create beautiful and responsive user interfaces. Flutter also provides many widgets and packages that make development easier and faster.
-One of the packages that I used in my app is Audio players, which enables me to play multiple audio files simultaneously. Audio players can play audio from different sources, such as remote files, local files, or local assets. In my app, I used local assets to store the sound files for each note.
-To create the buttons for the notes, I used FlatButton widget, which is a simple button that reacts to touches by filling with color. I also used SizedBox widget to adjust the size and spacing of the buttons. To arrange the buttons in a vertical column, I used Column widget, which is a layout widget that displays its children in a single line.",
+    description: "My xylophone app is built with Flutter, a cross-platform framework that allows me to create beautiful and responsive user interfaces. Flutter also provides many widgets and packages that make development easier and faster.One of the packages that I used in my app is Audio players, which enables me to play multiple audio files simultaneously. Audio players can play audio from different sources, such as remote files, local files, or local assets. In my app, I used local assets to store the sound files for each note.To create the buttons for the notes, I used FlatButton widget, which is a simple button that reacts to touches by filling with color. I also used SizedBox widget to adjust the size and spacing of the buttons. To arrange the buttons in a vertical column, I used Column widget, which is a layout widget that displays its children in a single line.",
     image: "/images/projects/4.png",
     tag: ["All", "Mobile"],
     gitUrl: "https://github.com/Lokeshwar-V/Xylophone-Flutter.git",
