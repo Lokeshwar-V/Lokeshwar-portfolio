@@ -18,7 +18,7 @@ const projectsData = [
   {
     id: 3,
     title: "Journal-EJS",
-    description: "A journal is a subsidiary book of account that records monetary transactions according to accounting standards. These transactions get recorded in chronological order, and it gives details about the accounts that are affected by each transaction.",
+    description: "Personal Journal is a website that allows you to create and manage your own online diary. Personal Journal lets you write about your thoughts, feelings, experiences, and goals in a private and secure way. Personal Journal uses EJS, a simple and powerful templating language that enables JavaScript to generate HTML, to create dynamic and interactive web pages ,Personal Journal is a personal and creative website that uses the benefits of EJS and JavaScript to deliver a user-friendly and enjoyable writing experience.",
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/Lokeshwar-V/Journal-EJS.git",
