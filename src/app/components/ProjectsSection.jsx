@@ -14,6 +14,16 @@ const projectsData = [
     gitUrl: "https://github.com/Lokeshwar-V/Lokeshwar-portfolio.git",
     previewUrl: "https://lokeshwar-portfolio.vercel.app/",
   },
+ {
+    id: 2,
+    title: "Climate card ",
+    description: "Climate Card React Site is a website that showcases how to create a simple weather app using React and OpenWeatherMap API. To create beautiful and responsive weather cards that display the current and forecasted weather data for different cities. You can learn how to fetch the data from the API, use environment variables, and use React hooks to manage the state of the app. You can also see the source code and a live demo of the app on the website1. If you are interested in learning React and building a weather app, this website is a great resource for you.",
+    image: "/images/projects/2.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/Lokeshwar-V/climate-card.git",
+    previewUrl: "https://climate-card-seven.vercel.app/",
+  },
+  
 
   {
     id: 3,
