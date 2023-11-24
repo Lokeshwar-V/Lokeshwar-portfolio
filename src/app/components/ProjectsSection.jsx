@@ -50,7 +50,7 @@ const projectsData = [
     image: "/images/projects/5.png",
     tag: ["All", "Mobile"],
     gitUrl: "https://github.com/Lokeshwar-V/BMI-Calculator-Flutter.git",
-    previewUrl: "/",
+    previewUrl: "https://www.amazon.com/gp/product/B092HKLC6Z",
   },
   {
     id: 6,
