@@ -2,6 +2,7 @@
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import { content } from "../../../tailwind.config";
 
 const TAB_DATA = [
   {
@@ -23,9 +24,18 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>B.Tech Information Technology - Vel Tech Multi Tech Dr Rangarajan Dr Shakunthala College <p>Graduated with 81.5%</p> </li>
-        <li>12th/HSC-Sri R M Jain Vidhyapeeth Higher Secondary School <p>Graduated with 82.5%</p> </li>
-        <li>10th/SSLC-Sri R M Jain Vidhyasharam CBSE<p>Graduated with 80%</p></li>
+        <li>
+          2022| B.Tech Information Technology - Vel Tech Multi Tech Dr
+          Rangarajan Dr Shakunthala College <p>Graduated with 81.5%</p>{" "}
+        </li>
+        <li>
+          2018| 12th/HSC-Sri R M Jain Vidhyapeeth Higher Secondary School{" "}
+          <p>Graduated with 82.5%</p>{" "}
+        </li>
+        <li>
+          2016| 10th/SSLC-Sri R M Jain Vidhyasharam CBSE
+          <p>Graduated with 80%</p>
+        </li>
       </ul>
     ),
   },
@@ -35,8 +45,19 @@ const TAB_DATA = [
     content: (
       <ul className="list-disc pl-2">
         <li>Full Stack with Java training - Beasant Technologies</li>
-        <li>The Complete 2021 Flutter Development Bootcamp with Dart - Udemy</li>
+        <li>
+          The Complete 2021 Flutter Development Bootcamp with Dart - Udemy
+        </li>
         <li>The Complete 2021 Web Development Bootcamp - Udemy</li>
+      </ul>
+    ),
+  },
+  {
+    title: "Work Experience",
+    id: "work",
+    content: (
+      <ul className="list-disc pl-2">
+        <li>2023Dec-Present|Software Developer Intern - NYL Technologies</li>
       </ul>
     ),
   },
