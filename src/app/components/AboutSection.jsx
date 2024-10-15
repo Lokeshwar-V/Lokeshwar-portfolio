@@ -87,11 +87,12 @@ const AboutSection = () => {
           <p className="text-base lg:text-lg">
             I am a full stack web developer with a passion for creating
             interactive and responsive web applications. I have experience
-            working with JavaScript, React,  Node.js, Express
-            , HTML and CSS. I'm currently working at Accenture as a packaged application development Associate.
-            I have also published 3 flutter apps on Amazon app store  I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
-            I am excited to work with others to create amazing applications.
+            working with JavaScript, React, Node.js, Express , HTML and CSS. I'm
+            currently working at Accenture as a packaged application development
+            Associate. I have also published 3 flutter apps on Amazon app store
+            I am a quick learner and I am always looking to expand my knowledge
+            and skill set. I am a team player and I am excited to work with
+            others to create amazing applications.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
@@ -120,7 +121,7 @@ const AboutSection = () => {
               active={tab === "work"}
             >
               {" "}
-             Work Experience {" "}
+              Work Experience{" "}
             </TabButton>
           </div>
           <div className="mt-8">
