@@ -2,6 +2,7 @@
 import React, { useTransition, useState } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import { content } from "../../../tailwind.config";
 
 const TAB_DATA = [
   {
@@ -23,9 +24,18 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>B.Tech Information Technology - Vel Tech Multi Tech Dr Rangarajan Dr Shakunthala College <p>Graduated with 81.5%</p> </li>
-        <li>12th/HSC-Sri R M Jain Vidhyapeeth Higher Secondary School <p>Graduated with 82.5%</p> </li>
-        <li>10th/SSLC-Sri R M Jain Vidhyasharam CBSE<p>Graduated with 80%</p></li>
+        <li>
+          2022|B.Tech Information Technology - Vel Tech Multi Tech Dr
+          Rangarajan Dr Shakunthala College <p>Graduated with 81.5%</p>{" "}
+        </li>
+        <li>
+          2018|12th/HSC-Sri R M Jain Vidhyapeeth Higher Secondary School{" "}
+          <p>Graduated with 82.5%</p>{" "}
+        </li>
+        <li>
+          2016|10th/SSLC-Sri R M Jain Vidhyasharam CBSE
+          <p>Graduated with 80%</p>
+        </li>
       </ul>
     ),
   },
@@ -35,8 +45,19 @@ const TAB_DATA = [
     content: (
       <ul className="list-disc pl-2">
         <li>Full Stack with Java training - Beasant Technologies</li>
-        <li>The Complete 2021 Flutter Development Bootcamp with Dart - Udemy</li>
+        <li>
+          The Complete 2021 Flutter Development Bootcamp with Dart - Udemy
+        </li>
         <li>The Complete 2021 Web Development Bootcamp - Udemy</li>
+      </ul>
+    ),
+  },
+  {
+    title: "Work Experience",
+    id: "work",
+    content: (
+      <ul className="list-disc pl-2">
+        <li>2023Dec-Present|Software Developer Intern - NYL Technologies</li>
       </ul>
     ),
   },
@@ -55,7 +76,12 @@ const AboutSection = () => {
   return (
     <section className="text-white" id="about">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about-image.png" alt="Hero image" width={500} height={500} />
+        <Image
+          src="/images/about-image.png"
+          alt="Hero image"
+          width={500}
+          height={500}
+        />
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
@@ -87,6 +113,13 @@ const AboutSection = () => {
             >
               {" "}
               Certifications{" "}
+            </TabButton>
+            <TabButton
+              selectTab={() => handleTabChange("work")}
+              active={tab === "work"}
+            >
+              {" "}
+             Work Experience {" "}
             </TabButton>
           </div>
           <div className="mt-8">
