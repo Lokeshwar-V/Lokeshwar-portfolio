@@ -64,7 +64,11 @@ const EmailSection = () => {
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
           <Link href="https://www.instagram.com/lokeshwar__v/">
-          <Image src={InstagramIcon} alt="Instagram Icon" />
+            <Image
+              src={InstagramIcon}
+              alt="Instagram Icon"
+              className="h-10 w-10"
+            />
           </Link>
         </div>
       </div>
@@ -88,7 +92,7 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                  placeholder="lokeshwar619@gmail.com"
+                placeholder="lokeshwar619@gmail.com"
               />
             </div>
             <div className="mb-6">
@@ -123,7 +127,9 @@ const EmailSection = () => {
             </div>
             <button
               type="submit"
-              onClick={() => window.location = 'mailto:lokeshwar619@gmail.com'}
+              onClick={() =>
+                (window.location = "mailto:lokeshwar619@gmail.com")
+              }
               className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
               Send Message
