@@ -67,7 +67,7 @@ const EmailSection = () => {
             <Image
               src={InstagramIcon}
               alt="Instagram Icon"
-              className="h-15 w-15"
+              className="h-12 w-12"
             />
           </Link>
         </div>
