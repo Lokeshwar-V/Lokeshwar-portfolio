@@ -33,7 +33,7 @@ const HeroSection = () => {
             />
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            I am Lokeshwar ,a Software Developer Intern at NYL Technologies and an graduate from Vel Tech Multi Tech Dr Rangarajan Dr Sakunthala Engineering College with a Bachelor’s degree in Information Technology. I graduated with a percentile of 81.5 and have strong foundational knowledge on Java,Python and Web Technologies.
+            I am Lokeshwar ,Packaged App Development Associate at Accenture and an graduate from Vel Tech Multi Tech Dr Rangarajan Dr Sakunthala Engineering College with a Bachelor’s degree in Information Technology. I graduated with a percentile of 81.5 and have strong foundational knowledge on Java,Python and Web Technologies.
           </p>
           <div>
             <Link

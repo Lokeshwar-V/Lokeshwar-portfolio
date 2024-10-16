@@ -9,12 +9,13 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
+        <li>.Net</li>
         <li>React.js</li>
         <li>Node.js</li>
         <li>Html-css-JavaScript</li>
+        <li>Python</li>
         <li>Flutter</li>
         <li>Java</li>
-        <li>Python</li>
       </ul>
     ),
   },
@@ -23,9 +24,17 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>B.Tech Information Technology - Vel Tech Multi Tech Dr Rangarajan Dr Shakunthala College <p>Graduated with 81.5%</p> </li>
-        <li>12th/HSC-Sri R M Jain Vidhyapeeth Higher Secondary School <p>Graduated with 82.5%</p> </li>
-        <li>10th/SSLC-Sri R M Jain Vidhyasharam CBSE<p>Graduated with 80%</p></li>
+        <li>
+          B.Tech Information Technology - Vel Tech Multi Tech Dr Rangarajan Dr
+          Shakunthala College <p>Graduated with 81.5%</p>{" "}
+        </li>
+        <li>
+          12th/HSC-Sri R M Jain Vidhyapeeth Higher Secondary School{" "}
+          <p>Graduated with 82.5%</p>{" "}
+        </li>
+        <li>
+          10th/SSLC-Sri R M Jain Vidhyasharam CBSE<p>Graduated with 80%</p>
+        </li>
       </ul>
     ),
   },
@@ -34,8 +43,10 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <ul className="list-disc pl-2">
-        <li>Full Stack with Java training - Beasant Technologies</li>
-        <li>The Complete 2021 Flutter Development Bootcamp with Dart - Udemy</li>
+        <li>Microsoft React.js (FED) - Accenture </li>
+        <li>
+          The Complete 2021 Flutter Development Bootcamp with Dart - Udemy
+        </li>
         <li>The Complete 2021 Web Development Bootcamp - Udemy</li>
       </ul>
     ),
