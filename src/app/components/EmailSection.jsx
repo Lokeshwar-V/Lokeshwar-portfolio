@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import InstagramIcon from "../../../public/instagram-new.png";
-import XIcon from "../../../public/x.png";
+import XIcon from "../../../public/x.jpg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -71,12 +71,8 @@ const EmailSection = () => {
               className="h-12 w-12"
             />
           </Link>
-          <Link href="https://www.instagram.com/lokeshwar__v/">
-            <Image
-              src={XIcon}
-              alt="Instagram Icon"
-              className="h-12 w-12"
-            />
+          <Link href="https://x.com/loki_codes">
+            <Image src={XIcon} alt="Instagram Icon" className="h-12 w-12" />
           </Link>
         </div>
       </div>
