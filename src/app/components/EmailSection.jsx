@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import InstagramIcon from "../../../public/instagram-new.png";
-import XIcon from "../../../public/x.avif";
+import XIcon from "../../../public/x.png";
 import Link from "next/link";
 import Image from "next/image";
 
