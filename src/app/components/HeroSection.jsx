@@ -80,7 +80,7 @@ const HeroSection = () => {
               Hire Me
             </Link>
             <Link
-              href="/cv/Lokeshwar Resume Updated.pdf"
+              href="/cv/Lokeshwar_Updated_Resume.pdf"
               className="rounded-full border border-slate-500/40 bg-slate-800/40 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-secondary-400/60 hover:bg-slate-800"
             >
               Download CV
