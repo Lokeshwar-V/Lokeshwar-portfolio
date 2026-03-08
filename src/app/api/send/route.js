@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
-
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request) {
@@ -21,12 +18,15 @@ export async function POST(request) {
       return NextResponse.json({ error: "Invalid email format." }, { status: 400 });
     }
 
-    if (!process.env.RESEND_API_KEY || !fromEmail) {
+    if (!process.env.RESEND_API_KEY || !process.env.FROM_EMAIL) {
       return NextResponse.json(
         { error: "Server email configuration is missing." },
         { status: 500 }
       );
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const fromEmail = process.env.FROM_EMAIL;
 
     const data = await resend.emails.send({
       from: fromEmail,
