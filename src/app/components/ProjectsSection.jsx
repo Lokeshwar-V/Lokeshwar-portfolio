@@ -19,6 +19,8 @@ const projectsData = [
     dateLabel: "Nov 2025 - Present",
     sortKey: 202511,
     organization: "Accenture, India",
+    flow:
+      "Extract -> Store -> Transform -> Embed -> Ingest -> Prompt -> Tool Calling -> Retrieval -> Response with Citations",
     tools: ["Python", "Milvus", "SQL", "Semantic Search", "AI Agents"],
     featured: true,
   },
@@ -35,6 +37,8 @@ const projectsData = [
     dateLabel: "Nov 2025",
     sortKey: 202511,
     organization: "Accenture, India",
+    flow:
+      "Extract -> Store -> Transform -> Embed -> Ingest -> Prompt -> Tool Calling -> Retrieval -> Response with Citations",
     tools: ["Python", "Azure Blob Storage", "GPT", "Milvus", "Vector Embeddings"],
     featured: true,
   },
@@ -51,6 +55,7 @@ const projectsData = [
     dateLabel: "Oct 2024 - Oct 2025",
     sortKey: 202410,
     organization: "Accenture, India",
+    flow: "Extract -> Transform -> Embed -> Ingest -> Retrieval",
     tools: ["Python", "pandas", "Milvus", "Cron Jobs"],
     featured: true,
   },
@@ -289,6 +294,7 @@ const ProjectsSection = () => {
               internal={project.internal}
               dateLabel={project.dateLabel}
               organization={project.organization}
+              flow={project.flow}
               tools={project.tools}
             />
           </motion.li>
@@ -326,6 +332,7 @@ const ProjectsSection = () => {
                     internal={project.internal}
                     dateLabel={project.dateLabel}
                     organization={project.organization}
+                    flow={project.flow}
                     tools={project.tools}
                   />
                 </motion.li>

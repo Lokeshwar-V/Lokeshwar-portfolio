@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg: #040916;
-  --bg-soft: #070f20;
+  --bg: #02070d;
+  --bg-soft: #07111c;
   --text: #e2e8f0;
   --muted: #94a3b8;
 }
@@ -16,9 +16,9 @@
 body {
   color: var(--text);
   background:
-    radial-gradient(circle at 15% 14%, rgba(99, 102, 241, 0.16), transparent 34%),
-    radial-gradient(circle at 82% 10%, rgba(56, 189, 248, 0.06), transparent 40%),
-    linear-gradient(180deg, var(--bg-soft) 0%, #061022 30%, var(--bg) 52%, #020617 100%);
+    radial-gradient(circle at 14% 10%, rgba(30, 64, 175, 0.14), transparent 36%),
+    radial-gradient(circle at 84% 16%, rgba(6, 95, 70, 0.12), transparent 40%),
+    linear-gradient(180deg, #08111b 0%, #050b13 42%, #02070d 100%);
   min-height: 100vh;
 }
 
@@ -42,7 +42,7 @@ html {
 }
 
 .neon-text {
-  background: linear-gradient(90deg, #a78bfa 0%, #60a5fa 100%);
+  background: linear-gradient(90deg, #cbd5e1 0%, #93c5fd 52%, #99f6e4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -53,10 +53,10 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b1023;
+  background: #09111a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1, #22d3ee);
+  background: linear-gradient(180deg, #1e3a5f, #0f766e);
   border-radius: 999px;
 }

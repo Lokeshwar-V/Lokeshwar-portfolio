@@ -8,9 +8,9 @@ const skills = [
   { label: "ETL", position: [-2.2, 1.25, 0], color: "#22d3ee" },
   { label: "Python", position: [-1.35, 0.3, 0], color: "#60a5fa" },
   { label: "SQL", position: [-2.1, -1.0, 0], color: "#60a5fa" },
-  { label: "Milvus", position: [0, 1.65, 0], color: "#a5b4fc" },
-  { label: "RAG", position: [1.3, 0.35, 0], color: "#a5b4fc" },
-  { label: "LangChain", position: [1.75, -0.65, 0], color: "#818cf8" },
+  { label: "Milvus", position: [0, 1.65, 0], color: "#38bdf8" },
+  { label: "RAG", position: [1.3, 0.35, 0], color: "#38bdf8" },
+  { label: "LangChain", position: [1.75, -0.65, 0], color: "#2563eb" },
   { label: "Azure", position: [2.25, 1.1, 0], color: "#22d3ee" },
   { label: "Functions", position: [2.15, -0.1, 0], color: "#22d3ee" },
   { label: "Logic Apps", position: [2.35, -1.2, 0], color: "#22d3ee" },
@@ -29,7 +29,7 @@ const SkillConstellation = () => {
     <group ref={groupRef}>
       <mesh position={[0, 0, 0]}>
         <sphereGeometry args={[0.28, 24, 24]} />
-        <meshStandardMaterial color="#818cf8" emissive="#6366f1" emissiveIntensity={0.55} />
+        <meshStandardMaterial color="#0e7490" emissive="#0369a1" emissiveIntensity={0.45} />
       </mesh>
 
       {links.map((line, idx) => (
@@ -99,8 +99,8 @@ const AboutSection = () => {
         <div className="glass-card h-[360px] p-4 md:h-[420px]">
           <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
             <ambientLight intensity={0.65} />
-            <pointLight position={[3, 2, 3]} intensity={1.05} color="#818cf8" />
-            <pointLight position={[-2, -2, 2]} intensity={1.05} color="#22d3ee" />
+            <pointLight position={[3, 2, 3]} intensity={0.95} color="#1e40af" />
+            <pointLight position={[-2, -2, 2]} intensity={0.95} color="#0f766e" />
             <Float speed={1.3} rotationIntensity={0.6}>
               <SkillConstellation />
             </Float>

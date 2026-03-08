@@ -11,14 +11,14 @@ module.exports = {
         surface: "#050816",
         card: "#0f172a",
         primary: {
-          400: "#9f67ff",
-          500: "#7c3aed",
-          600: "#6d28d9",
+          400: "#38bdf8",
+          500: "#0ea5e9",
+          600: "#0284c7",
         },
         secondary: {
-          400: "#22d3ee",
-          500: "#06b6d4",
-          600: "#0891b2",
+          400: "#5eead4",
+          500: "#14b8a6",
+          600: "#0f766e",
         },
       },
       backgroundImage: {
@@ -27,7 +27,7 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       boxShadow: {
-        glow: "0 0 70px rgba(99, 102, 241, 0.28)",
+        glow: "0 0 70px rgba(14, 165, 233, 0.3)",
       },
     },
   },

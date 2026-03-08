@@ -126,7 +126,7 @@ const EmailSection = () => {
           <button
             type="submit"
             disabled={status.type === "loading"}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-900 to-emerald-900 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <EnvelopeIcon className="h-5 w-5" />
             {status.type === "loading" ? "Sending..." : "Send Message"}

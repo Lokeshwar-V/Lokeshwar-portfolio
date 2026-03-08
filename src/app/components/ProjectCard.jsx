@@ -12,6 +12,7 @@ const ProjectCard = ({
   internal,
   organization,
   dateLabel,
+  flow,
   tools = [],
 }) => {
   const showLinks = !internal && (gitUrl !== "#" || previewUrl !== "#");
@@ -26,7 +27,7 @@ const ProjectCard = ({
               ? { background: `url(${imgUrl}) center/cover no-repeat` }
               : {
                   background:
-                    "linear-gradient(120deg, rgba(124,58,237,0.45), rgba(6,182,212,0.3), rgba(15,23,42,0.8))",
+                    "linear-gradient(120deg, rgba(14,165,233,0.38), rgba(20,184,166,0.26), rgba(15,23,42,0.84))",
                 }
           }
         >
@@ -80,6 +81,12 @@ const ProjectCard = ({
           </div>
           <h5 className="mb-2 text-lg font-semibold text-white">{title}</h5>
           <p className="text-sm leading-relaxed text-slate-300">{description}</p>
+          {flow && (
+            <p className="mt-3 rounded-lg border border-cyan-400/25 bg-cyan-500/10 px-3 py-2 text-xs font-medium leading-relaxed text-cyan-100">
+              <span className="mr-1 font-semibold text-cyan-200">Flow:</span>
+              {flow}
+            </p>
+          )}
           {tools.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-2">
               {tools.map((tool) => (
