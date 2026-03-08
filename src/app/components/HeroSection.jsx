@@ -12,7 +12,8 @@ const pipelineStages = [
   { label: "Embed", position: [0.55, 1.25, 0], color: "#0d9488" },
   { label: "Ingest", position: [1.85, 1.25, 0], color: "#0369a1" },
   { label: "Prompt", position: [1.85, -0.15, 0], color: "#0f766e" },
-  { label: "Retrieval", position: [0.35, -1.2, 0], color: "#0e7490" },
+  { label: "Tool Calling", sub: "invoke tools", position: [1.15, -0.85, 0], color: "#0ea5a4" },
+  { label: "Retrieval", position: [0.15, -1.35, 0], color: "#0e7490" },
 ];
 
 const pathPoints = pipelineStages.map((stage) => stage.position);

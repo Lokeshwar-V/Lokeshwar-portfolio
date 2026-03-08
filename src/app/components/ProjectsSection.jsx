@@ -55,7 +55,7 @@ const projectsData = [
     dateLabel: "Oct 2024 - Oct 2025",
     sortKey: 202410,
     organization: "Accenture, India",
-    flow: "Extract -> Transform -> Embed -> Ingest -> Retrieval",
+    flow: "Extract -> Transform -> Embed -> Ingest",
     tools: ["Python", "pandas", "Milvus", "Cron Jobs"],
     featured: true,
   },
