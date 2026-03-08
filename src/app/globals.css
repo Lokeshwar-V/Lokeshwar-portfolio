@@ -3,25 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: #050816;
+  --bg-soft: #0b1023;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.25), transparent 30%),
+    radial-gradient(circle at 90% 5%, rgba(34, 211, 238, 0.2), transparent 35%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 40%, #03040d 100%);
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 1rem;
+  box-shadow:
+    0 10px 30px rgba(2, 6, 23, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-extrabold tracking-tight;
+}
+
+.neon-text {
+  background: linear-gradient(90deg, #9f67ff 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b1023;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c3aed, #06b6d4);
+  border-radius: 999px;
 }

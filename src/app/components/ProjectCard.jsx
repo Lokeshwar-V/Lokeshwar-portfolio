@@ -1,34 +1,66 @@
 import React from "react";
 import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Tilt from "react-parallax-tilt";
 
-const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
+const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, internal }) => {
+  const showLinks = gitUrl !== "#" || previewUrl !== "#";
+
   return (
-    <div>
-      <div
-        className="h-52 md:h-72 rounded-t-xl relative group"
-        style={{ background: `url(${imgUrl})`, backgroundSize: "cover" }}
-      >
-        <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
-          <Link
-            href={gitUrl}
-            className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
-          </Link>
-          <Link
-            href={previewUrl}
-            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
-          </Link>
+    <Tilt tiltMaxAngleX={7} tiltMaxAngleY={7} perspective={1000} className="h-full">
+      <div className="glass-card h-full overflow-hidden border border-slate-600/25 transition duration-300 hover:border-secondary-400/40">
+        <div
+          className="group relative h-52 md:h-60"
+          style={
+            imgUrl
+              ? { background: `url(${imgUrl}) center/cover no-repeat` }
+              : {
+                  background:
+                    "linear-gradient(120deg, rgba(124,58,237,0.45), rgba(6,182,212,0.3), rgba(15,23,42,0.8))",
+                }
+          }
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/45 to-transparent" />
+          <div className="absolute inset-0 hidden items-center justify-center gap-3 bg-slate-950/75 transition-all duration-300 group-hover:flex">
+            {showLinks ? (
+              <>
+                {gitUrl !== "#" && (
+                  <Link
+                    href={gitUrl}
+                    target="_blank"
+                    className="group/link relative flex h-12 w-12 items-center justify-center rounded-full border border-slate-300/60"
+                  >
+                    <CodeBracketIcon className="h-7 w-7 text-slate-200 transition group-hover/link:text-white" />
+                  </Link>
+                )}
+                {previewUrl !== "#" && (
+                  <Link
+                    href={previewUrl}
+                    target="_blank"
+                    className="group/link relative flex h-12 w-12 items-center justify-center rounded-full border border-slate-300/60"
+                  >
+                    <EyeIcon className="h-7 w-7 text-slate-200 transition group-hover/link:text-white" />
+                  </Link>
+                )}
+              </>
+            ) : (
+              <p className="rounded-full border border-secondary-400/30 bg-secondary-400/10 px-4 py-2 text-xs font-semibold tracking-wide text-secondary-300">
+                Enterprise Internal Project
+              </p>
+            )}
+          </div>
+          {internal && (
+            <span className="absolute left-3 top-3 rounded-full border border-primary-400/40 bg-primary-500/20 px-3 py-1 text-[11px] font-semibold tracking-wide text-primary-200">
+              Placeholder (Confidential)
+            </span>
+          )}
+        </div>
+        <div className="p-5">
+          <h5 className="mb-2 text-lg font-semibold text-white">{title}</h5>
+          <p className="text-sm leading-relaxed text-slate-300">{description}</p>
         </div>
       </div>
-      <div className="text-white rounded-b-xl mt-3 bg-[#181818]py-6 px-4">
-        <h5 className="text-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE]">{description}</p>
-      </div>
-    </div>
+    </Tilt>
   );
 };
 

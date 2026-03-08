@@ -1,62 +1,62 @@
 "use client";
+
 import React from "react";
-import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 
+const stats = [
+  { label: "Experience", value: "2+ Years" },
+  { label: "Records per Pipeline", value: "500K+" },
+  { label: "Retrieval Latency Improvement", value: "30%" },
+  { label: "Ops Time Saved", value: "20 hrs / week" },
+];
 
-const AnimatedNumbers = dynamic(
-  () => {
-    return import("react-animated-numbers");
-  },
-  { ssr: false }
-);
-
-const achievementsList = [
-  {
-    metric: "Projects",
-    value: "8",
-
-  },
-
-
-  {
-    metric: "Years",
-    value: "0",
-  },
+const badges = [
+  "Star of the Month — Accenture (2025)",
+  "TechExpressway Merit Holder — Accenture (2024)",
+  "Microsoft Certified: Azure AI Fundamentals",
+  "Microsoft Applied Skills: AI-Assisted Development with GitHub Copilot",
+  "TCS NQT — 84 Percentile",
+  "HIGH FLYER Recognition",
 ];
 
 const AchievementsSection = () => {
   return (
-    <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-      <div className="sm:border-[#33353F] sm:border rounded-md py-8 px-16 flex flex-col sm:flex-row items-center justify-evenly ">
-        {achievementsList.map((achievement, index) => {
-          return (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
-            >
-              <h2 className="text-white text-4xl font-bold flex flex-row">
-                {achievement.prefix}
-                <AnimatedNumbers
-                  includeComma
-                  animateToNumber={parseInt(achievement.value)}
-                  locale="en-In"
-                  className="text-white text-4xl font-bold"
-                  configs={(_, index) => {
-                    return {
-                      mass: 1,
-                      friction: 100,
-                      tensions: 140 * (index + 1),
-                    };
-                  }}
-                />
-                {achievement.postfix}
-              </h2>
-              <p className="text-[#ADB7BE] text-base">{achievement.metric}</p>
-            </div>
-          );
-        })}
+    <section id="achievements" className="py-14">
+      <h2 className="section-title mb-8 text-white">
+        Certifications & <span className="neon-text">Achievements</span>
+      </h2>
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {stats.map((item, idx) => (
+          <motion.div
+            key={item.label}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: idx * 0.07 }}
+            className="glass-card p-5"
+          >
+            <p className="mb-1 text-2xl font-extrabold text-white">{item.value}</p>
+            <p className="text-sm text-slate-400">{item.label}</p>
+          </motion.div>
+        ))}
       </div>
-    </div>
+
+      <div className="mt-6 grid gap-3 md:grid-cols-2">
+        {badges.map((badge, idx) => (
+          <motion.div
+            key={badge}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: idx * 0.05 }}
+            className="glass-card px-4 py-3 text-sm text-slate-300"
+          >
+            {badge}
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 };
 

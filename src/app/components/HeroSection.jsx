@@ -1,72 +1,99 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
-import { motion } from "framer-motion";
+import React, { useMemo } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float, MeshDistortMaterial, OrbitControls, Sparkles, Stars } from "@react-three/drei";
+
+const Orb = () => {
+  const meshRef = React.useRef(null);
+
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    meshRef.current.rotation.y = clock.getElapsedTime() * 0.35;
+    meshRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.5) * 0.2;
+  });
+
+  return (
+    <Float speed={1.8} rotationIntensity={1} floatIntensity={1.6}>
+      <mesh ref={meshRef}>
+        <icosahedronGeometry args={[1.8, 10]} />
+        <MeshDistortMaterial
+          color="#7c3aed"
+          roughness={0.1}
+          metalness={0.6}
+          emissive="#06b6d4"
+          emissiveIntensity={0.25}
+          distort={0.35}
+          speed={2.2}
+        />
+      </mesh>
+    </Float>
+  );
+};
+
+const HeroCanvas = () => {
+  const dpr = useMemo(() => [1, 1.5], []);
+
+  return (
+    <Canvas dpr={dpr} camera={{ position: [0, 0, 5], fov: 55 }}>
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[4, 4, 3]} intensity={2.2} color="#9f67ff" />
+      <directionalLight position={[-3, -2, 1]} intensity={1.4} color="#06b6d4" />
+      <Stars radius={65} depth={50} count={2000} factor={4} fade speed={1.2} />
+      <Sparkles count={130} scale={8} size={3} speed={0.2} color="#9f67ff" />
+      <Orb />
+      <OrbitControls autoRotate autoRotateSpeed={0.7} enableZoom={false} enablePan={false} />
+    </Canvas>
+  );
+};
 
 const HeroSection = () => {
   return (
-    <section className="lg:py-16">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
+    <section className="relative min-h-[86vh] py-12" id="home">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="col-span-12 lg:col-span-7"
         >
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              Hello, I&apos;m{" "}
-            </span>
-            <br></br>
-            <TypeAnimation
-              sequence={[
-                "Lokeshwar",
-                1000,
-                "Web Developer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            I am Lokeshwar , Packaged App Development Associate at Accenture and an graduate from Vel Tech Multi Tech Dr Rangarajan Dr Sakunthala Engineering College with a Bachelor’s degree in Information Technology. I graduated with a percentile of 81.5 and have strong foundational knowledge on Java,Python and Web Technologies.
+          <p className="mb-3 inline-flex rounded-full border border-secondary-400/30 bg-secondary-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-secondary-400">
+            Data Engineer • Chennai, India
           </p>
-          <div>
+          <h1 className="mb-4 text-5xl font-black leading-tight md:text-7xl">
+            Hey, I&apos;m <span className="neon-text">Lokeshwar V</span>
+          </h1>
+          <h2 className="mb-6 text-xl font-semibold text-slate-300 md:text-2xl">
+            Building ETL pipelines, AI retrieval agents, and Azure automation workflows.
+          </h2>
+          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-slate-400 md:text-base">
+            2+ years at Accenture delivering enterprise data systems processing 500K+ records with
+            validated data quality. Specialized in Python, SQL, Milvus vector search, semantic
+            retrieval, and workflow automation across Azure App Service, Functions, and Logic Apps.
+          </p>
+          <div className="flex flex-wrap gap-4">
             <Link
-              href="/contact"
-              className="px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-200 text-white"
+              href="#contact"
+              className="rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 px-7 py-3 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]"
             >
               Hire Me
             </Link>
             <Link
               href="/cv/Lokeshwar Resume Updated.pdf"
-              className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
+              className="rounded-full border border-slate-500/40 bg-slate-800/40 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-secondary-400/60 hover:bg-slate-800"
             >
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-                Download CV
-              </span>
+              Download CV
             </Link>
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-4 place-self-center mt-4 lg:mt-0"
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="col-span-12 h-[380px] rounded-3xl border border-slate-600/20 bg-slate-900/30 shadow-glow lg:col-span-5"
         >
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
-            <Image
-              src="/images/hero-image.png"
-              alt="hero image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={300}
-              height={300}
-            />
-          </div>
+          <HeroCanvas />
         </motion.div>
       </div>
     </section>

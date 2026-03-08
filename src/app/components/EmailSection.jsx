@@ -1,145 +1,151 @@
 "use client";
+
 import React, { useState } from "react";
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedinIcon from "../../../public/linkedin-icon.svg";
-import InstagramIcon from "../../../public/instagram-new.png";
-import XIcon from "../../../public/x.jpg";
 import Link from "next/link";
-import Image from "next/image";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [status, setStatus] = useState({ type: "idle", message: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
+    setStatus({ type: "loading", message: "Sending message..." });
+
+    const payload = {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+      const body = await response.json();
 
-    if (response.status === 200) {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
+      if (!response.ok) {
+        throw new Error(body?.error || "Unable to send message right now.");
+      }
+
+      setStatus({ type: "success", message: "Email sent successfully." });
+      e.target.reset();
+    } catch (error) {
+      setStatus({ type: "error", message: error.message || "Failed to send message." });
     }
   };
 
   return (
-    <section
-      id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
-    >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
-      <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let`&apos;s Connect
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
-        </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/Lokeshwar-V">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/lokeshwar-v-017a1b142/">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
-          </Link>
-          <Link href="https://www.instagram.com/lokeshwar__v/">
-            <Image
-              src={InstagramIcon}
-              alt="Instagram Icon"
-              className="h-12 w-12"
-            />
-          </Link>
-          <Link href="https://x.com/loki_codes">
-            <Image src={XIcon} alt="Instagram Icon" className="h-12 w-12" />
-          </Link>
-        </div>
-      </div>
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
+    <section id="contact" className="relative py-16">
+      <h2 className="section-title mb-8 text-white">
+        Let&apos;s <span className="neon-text">Connect</span>
+      </h2>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="glass-card p-6 md:p-8">
+          <p className="mb-5 text-sm leading-relaxed text-slate-300 md:text-base">
+            I am actively looking for Data Engineer roles and impactful AI/data platform projects.
+            If you have an opportunity or collaboration idea, let&apos;s talk.
           </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="lokeshwar619@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              onClick={() =>
-                (window.location = "mailto:lokeshwar619@gmail.com")
-              }
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+
+          <div className="space-y-3 text-sm text-slate-300">
+            <p>
+              <span className="font-semibold text-white">Email:</span> lokeshwar_v@yahoo.com
+            </p>
+            <p>
+              <span className="font-semibold text-white">Phone:</span> +91 9578692037
+            </p>
+            <p>
+              <span className="font-semibold text-white">Location:</span> Chennai, India
+            </p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="https://github.com/Lokeshwar-V"
+              target="_blank"
+              className="rounded-full border border-slate-600/60 px-4 py-2 text-sm text-slate-200 transition hover:border-secondary-400"
             >
-              Send Message
-            </button>
-          </form>
-        )}
+              GitHub
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/lokeshwar-v-017a1b142/"
+              target="_blank"
+              className="rounded-full border border-slate-600/60 px-4 py-2 text-sm text-slate-200 transition hover:border-secondary-400"
+            >
+              LinkedIn
+            </Link>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="glass-card space-y-5 p-6 md:p-8">
+          <div>
+            <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-200">
+              Your Email
+            </label>
+            <input
+              name="email"
+              type="email"
+              id="email"
+              required
+              className="w-full rounded-lg border border-slate-600/60 bg-slate-900/60 p-3 text-sm text-slate-100 outline-none transition focus:border-secondary-400"
+              placeholder="you@company.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="subject" className="mb-2 block text-sm font-medium text-slate-200">
+              Subject
+            </label>
+            <input
+              name="subject"
+              type="text"
+              id="subject"
+              required
+              className="w-full rounded-lg border border-slate-600/60 bg-slate-900/60 p-3 text-sm text-slate-100 outline-none transition focus:border-secondary-400"
+              placeholder="Opportunity discussion"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
+              Message
+            </label>
+            <textarea
+              name="message"
+              id="message"
+              required
+              rows={5}
+              className="w-full rounded-lg border border-slate-600/60 bg-slate-900/60 p-3 text-sm text-slate-100 outline-none transition focus:border-secondary-400"
+              placeholder="Tell me about the role/project"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={status.type === "loading"}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <EnvelopeIcon className="h-5 w-5" />
+            {status.type === "loading" ? "Sending..." : "Send Message"}
+          </button>
+
+          {status.type !== "idle" && (
+            <p
+              className={`text-sm ${
+                status.type === "success"
+                  ? "text-emerald-400"
+                  : status.type === "error"
+                  ? "text-red-400"
+                  : "text-slate-300"
+              }`}
+            >
+              {status.message}
+            </p>
+          )}
+        </form>
       </div>
     </section>
   );
