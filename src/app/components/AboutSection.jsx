@@ -1,67 +1,57 @@
 "use client";
 import React, { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Sparkles, Text } from "@react-three/drei";
+import { Float, Line, Sparkles, Text } from "@react-three/drei";
 import { motion } from "framer-motion";
 
 const skills = [
-  "Python",
-  "SQL",
-  "Pandas",
-  "ETL",
-  "Milvus",
-  "PostgreSQL",
-  "LangChain",
-  "RAG",
-  "FastAPI",
-  "Flask",
-  "Azure",
-  "Logic Apps",
-  "Azure Functions",
-  "REST APIs",
-  "Git",
+  { label: "ETL", position: [-2.2, 1.25, 0], color: "#22d3ee" },
+  { label: "Python", position: [-1.35, 0.3, 0], color: "#60a5fa" },
+  { label: "SQL", position: [-2.1, -1.0, 0], color: "#60a5fa" },
+  { label: "Milvus", position: [0, 1.65, 0], color: "#a5b4fc" },
+  { label: "RAG", position: [1.3, 0.35, 0], color: "#a5b4fc" },
+  { label: "LangChain", position: [1.75, -0.65, 0], color: "#818cf8" },
+  { label: "Azure", position: [2.25, 1.1, 0], color: "#22d3ee" },
+  { label: "Functions", position: [2.15, -0.1, 0], color: "#22d3ee" },
+  { label: "Logic Apps", position: [2.35, -1.2, 0], color: "#22d3ee" },
 ];
 
-const SkillOrb = () => {
+const SkillConstellation = () => {
   const groupRef = useRef(null);
-  const points = useMemo(
-    () =>
-      skills.map((skill, i) => {
-        const phi = Math.acos(-1 + (2 * i) / skills.length);
-        const theta = Math.sqrt(skills.length * Math.PI) * phi;
-        const radius = 2.1;
-        return {
-          label: skill,
-          position: [
-            radius * Math.cos(theta) * Math.sin(phi),
-            radius * Math.sin(theta) * Math.sin(phi),
-            radius * Math.cos(phi),
-          ],
-        };
-      }),
-    []
-  );
+  const links = useMemo(() => skills.map((skill) => [[0, 0, 0], skill.position]), []);
 
   useFrame(({ clock }) => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y = clock.getElapsedTime() * 0.2;
+    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.18) * 0.2;
   });
 
   return (
     <group ref={groupRef}>
-      {points.map((point) => (
-        <Text
-          key={point.label}
-          position={point.position}
-          fontSize={0.21}
-          color="#e2e8f0"
-          anchorX="center"
-          anchorY="middle"
-        >
-          {point.label}
-        </Text>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[0.28, 24, 24]} />
+        <meshStandardMaterial color="#818cf8" emissive="#6366f1" emissiveIntensity={0.55} />
+      </mesh>
+
+      {links.map((line, idx) => (
+        <Line key={`line-${idx}`} points={line} color="#334155" transparent opacity={0.8} lineWidth={1.2} />
       ))}
-      <Sparkles count={110} scale={6} size={2} speed={0.35} color="#06b6d4" />
+
+      {skills.map((skill) => (
+        <group key={skill.label} position={skill.position}>
+          <mesh>
+            <sphereGeometry args={[0.08, 16, 16]} />
+            <meshStandardMaterial color={skill.color} emissive={skill.color} emissiveIntensity={0.35} />
+          </mesh>
+          <Text position={[0, 0.22, 0]} fontSize={0.16} color="#e2e8f0" anchorX="center" anchorY="middle">
+            {skill.label}
+          </Text>
+        </group>
+      ))}
+
+      <Text position={[0, -0.42, 0]} fontSize={0.16} color="#94a3b8" anchorX="center" anchorY="middle">
+        Data Core
+      </Text>
+      <Sparkles count={65} scale={6.2} size={1.8} speed={0.2} color="#22d3ee" />
     </group>
   );
 };
@@ -108,11 +98,11 @@ const AboutSection = () => {
 
         <div className="glass-card h-[360px] p-4 md:h-[420px]">
           <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
-            <ambientLight intensity={0.6} />
-            <pointLight position={[3, 2, 3]} intensity={1.1} color="#9f67ff" />
-            <pointLight position={[-2, -2, 2]} intensity={1.1} color="#06b6d4" />
+            <ambientLight intensity={0.65} />
+            <pointLight position={[3, 2, 3]} intensity={1.05} color="#818cf8" />
+            <pointLight position={[-2, -2, 2]} intensity={1.05} color="#22d3ee" />
             <Float speed={1.3} rotationIntensity={0.6}>
-              <SkillOrb />
+              <SkillConstellation />
             </Float>
           </Canvas>
         </div>

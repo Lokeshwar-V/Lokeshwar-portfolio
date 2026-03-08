@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg: #050816;
-  --bg-soft: #0b1023;
+  --bg: #040916;
+  --bg-soft: #0a1226;
   --text: #e2e8f0;
   --muted: #94a3b8;
 }
@@ -16,9 +16,9 @@
 body {
   color: var(--text);
   background:
-    radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.25), transparent 30%),
-    radial-gradient(circle at 90% 5%, rgba(34, 211, 238, 0.2), transparent 35%),
-    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 40%, #03040d 100%);
+    radial-gradient(circle at 18% 16%, rgba(99, 102, 241, 0.22), transparent 34%),
+    radial-gradient(circle at 84% 8%, rgba(34, 211, 238, 0.15), transparent 38%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 42%, #020617 100%);
   min-height: 100vh;
 }
 
@@ -57,6 +57,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #7c3aed, #06b6d4);
+  background: linear-gradient(180deg, #6366f1, #22d3ee);
   border-radius: 999px;
 }
