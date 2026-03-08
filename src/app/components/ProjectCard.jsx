@@ -3,8 +3,18 @@ import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Tilt from "react-parallax-tilt";
 
-const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, internal }) => {
-  const showLinks = gitUrl !== "#" || previewUrl !== "#";
+const ProjectCard = ({
+  imgUrl,
+  title,
+  description,
+  gitUrl,
+  previewUrl,
+  internal,
+  organization,
+  dateLabel,
+  tools = [],
+}) => {
+  const showLinks = !internal && (gitUrl !== "#" || previewUrl !== "#");
 
   return (
     <Tilt tiltMaxAngleX={7} tiltMaxAngleY={7} perspective={1000} className="h-full">
@@ -45,19 +55,43 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, internal 
               </>
             ) : (
               <p className="rounded-full border border-secondary-400/30 bg-secondary-400/10 px-4 py-2 text-xs font-semibold tracking-wide text-secondary-300">
-                Enterprise Internal Project
+                {internal ? "Enterprise Internal Project" : "Details Available On Request"}
               </p>
             )}
           </div>
           {internal && (
             <span className="absolute left-3 top-3 rounded-full border border-primary-400/40 bg-primary-500/20 px-3 py-1 text-[11px] font-semibold tracking-wide text-primary-200">
-              Placeholder (Confidential)
+              Confidential Client Work
             </span>
           )}
         </div>
         <div className="p-5">
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            {dateLabel && (
+              <span className="rounded-full border border-slate-500/40 bg-slate-800/70 px-2 py-1 text-[11px] font-semibold tracking-wide text-slate-200">
+                {dateLabel}
+              </span>
+            )}
+            {organization && (
+              <span className="rounded-full border border-secondary-400/30 bg-secondary-500/10 px-2 py-1 text-[11px] font-semibold tracking-wide text-secondary-200">
+                {organization}
+              </span>
+            )}
+          </div>
           <h5 className="mb-2 text-lg font-semibold text-white">{title}</h5>
           <p className="text-sm leading-relaxed text-slate-300">{description}</p>
+          {tools.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {tools.map((tool) => (
+                <span
+                  key={`${title}-${tool}`}
+                  className="rounded-full border border-slate-500/40 bg-slate-800/60 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-200"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Tilt>
