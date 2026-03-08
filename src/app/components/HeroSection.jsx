@@ -3,20 +3,31 @@ import React, { useMemo, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Line, OrbitControls, Sparkles, Stars, Text } from "@react-three/drei";
+import { Float, Line, Sparkles, Stars, Text } from "@react-three/drei";
 
 const pipelineStages = [
-  { label: "Extract", sub: "from GCP", position: [-3.1, 1.25, 0], color: "#2563eb" },
-  { label: "Store", sub: "in Azure", position: [-1.95, 1.25, 0], color: "#0f766e" },
-  { label: "Transform", position: [-0.7, 1.25, 0], color: "#1d4ed8" },
-  { label: "Embed", position: [0.55, 1.25, 0], color: "#0d9488" },
-  { label: "Ingest", position: [1.85, 1.25, 0], color: "#0369a1" },
-  { label: "Prompt", position: [1.85, -0.15, 0], color: "#0f766e" },
-  { label: "Tool Calling", sub: "invoke tools", position: [1.15, -0.85, 0], color: "#0ea5a4" },
-  { label: "Retrieval", position: [0.15, -1.35, 0], color: "#0e7490" },
+  { label: "Extract", sub: "from GCP", position: [-3.15, 1.1, 0], color: "#2563eb" },
+  { label: "Store", sub: "in Azure", position: [-1.95, 1.1, 0], color: "#0f766e" },
+  { label: "Transform", position: [-0.72, 1.1, 0], color: "#1d4ed8" },
+  { label: "Embed", position: [0.48, 1.1, 0], color: "#0d9488" },
+  { label: "Ingest", position: [1.68, 1.1, 0], color: "#0369a1" },
+  { label: "Prompt", position: [1.68, -0.1, 0], color: "#0f766e" },
+  { label: "Tool Calling", sub: "invoke tools", position: [0.82, -0.9, 0], color: "#0ea5a4" },
+  { label: "Retrieval", position: [-0.28, -0.9, 0], color: "#0e7490" },
 ];
 
-const pathPoints = pipelineStages.map((stage) => stage.position);
+const pathPoints = [
+  pipelineStages[0].position,
+  pipelineStages[1].position,
+  pipelineStages[2].position,
+  pipelineStages[3].position,
+  pipelineStages[4].position,
+  [pipelineStages[4].position[0], 0.55, 0],
+  pipelineStages[5].position,
+  [pipelineStages[5].position[0], pipelineStages[6].position[1], 0],
+  pipelineStages[6].position,
+  pipelineStages[7].position,
+];
 
 const buildSegments = (points) => {
   const segments = [];
@@ -55,15 +66,23 @@ const pointAtProgress = (progress) => {
 };
 
 const PipelineScene = () => {
+  const rigRef = useRef(null);
   const packetA = useRef(null);
   const packetB = useRef(null);
   const packetC = useRef(null);
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, mouse }) => {
     const t = clock.getElapsedTime();
     const p1 = pointAtProgress(t * 0.12);
     const p2 = pointAtProgress(t * 0.12 - 0.33);
     const p3 = pointAtProgress(t * 0.12 - 0.66);
+
+    if (rigRef.current) {
+      const targetX = mouse.y * 0.18;
+      const targetY = mouse.x * 0.35;
+      rigRef.current.rotation.x += (targetX - rigRef.current.rotation.x) * 0.08;
+      rigRef.current.rotation.y += (targetY - rigRef.current.rotation.y) * 0.08;
+    }
 
     if (packetA.current) packetA.current.position.set(p1[0], p1[1], 0.1);
     if (packetB.current) packetB.current.position.set(p2[0], p2[1], 0.1);
@@ -71,9 +90,15 @@ const PipelineScene = () => {
   });
 
   return (
-    <Float speed={1.4} rotationIntensity={0.15} floatIntensity={0.4}>
-      <group>
-        <Line points={pathPoints} color="#0ea5e9" lineWidth={1.6} transparent opacity={0.7} />
+    <Float speed={1.2} rotationIntensity={0.08} floatIntensity={0.3}>
+      <group ref={rigRef}>
+        <Line
+          points={pathPoints}
+          color="#0ea5e9"
+          lineWidth={1.8}
+          transparent
+          opacity={0.78}
+        />
 
         {pipelineStages.map((stage) => (
           <group key={stage.label} position={stage.position}>
@@ -92,15 +117,15 @@ const PipelineScene = () => {
           </group>
         ))}
 
-        <mesh ref={packetA} position={[-3.1, 1.25, 0.1]}>
+        <mesh ref={packetA} position={[-3.15, 1.1, 0.1]}>
           <sphereGeometry args={[0.08, 16, 16]} />
           <meshStandardMaterial color="#22d3ee" emissive="#22d3ee" emissiveIntensity={0.45} />
         </mesh>
-        <mesh ref={packetB} position={[-2.55, 1.25, 0.1]}>
+        <mesh ref={packetB} position={[-2.55, 1.1, 0.1]}>
           <sphereGeometry args={[0.08, 16, 16]} />
           <meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.45} />
         </mesh>
-        <mesh ref={packetC} position={[-2, 1.25, 0.1]}>
+        <mesh ref={packetC} position={[-1.95, 1.1, 0.1]}>
           <sphereGeometry args={[0.08, 16, 16]} />
           <meshStandardMaterial color="#14b8a6" emissive="#14b8a6" emissiveIntensity={0.45} />
         </mesh>
@@ -120,7 +145,6 @@ const HeroCanvas = () => {
       <Stars radius={55} depth={40} count={700} factor={1.6} fade speed={0.25} />
       <Sparkles count={30} scale={6.2} size={1.3} speed={0.08} color="#67e8f9" />
       <PipelineScene />
-      <OrbitControls autoRotate autoRotateSpeed={0.25} enableZoom={false} enablePan={false} />
     </Canvas>
   );
 };

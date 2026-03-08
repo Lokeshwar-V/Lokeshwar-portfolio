@@ -20,9 +20,15 @@ const SkillConstellation = () => {
   const groupRef = useRef(null);
   const links = useMemo(() => skills.map((skill) => [[0, 0, 0], skill.position]), []);
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, mouse }) => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.18) * 0.2;
+
+    const driftY = Math.sin(clock.getElapsedTime() * 0.18) * 0.12;
+    const targetX = mouse.y * 0.2;
+    const targetY = driftY + mouse.x * 0.32;
+
+    groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.08;
+    groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.08;
   });
 
   return (
