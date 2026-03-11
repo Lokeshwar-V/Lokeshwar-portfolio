@@ -16,6 +16,8 @@ const pipelineStages = [
   { label: "Retrieval", position: [-0.28, -0.9, 0], color: "#0e7490" },
 ];
 
+const pipelineRigOffset = [0.74, -0.1, 0];
+
 const pathPoints = [
   pipelineStages[0].position,
   pipelineStages[1].position,
@@ -91,7 +93,7 @@ const PipelineScene = () => {
 
   return (
     <Float speed={1.2} rotationIntensity={0.08} floatIntensity={0.3}>
-      <group ref={rigRef}>
+      <group ref={rigRef} position={pipelineRigOffset}>
         <Line
           points={pathPoints}
           color="#0ea5e9"

@@ -6,6 +6,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 const EmailSection = () => {
   const [status, setStatus] = useState({ type: "idle", message: "" });
+  const [isPhoneVisible, setIsPhoneVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,9 +55,26 @@ const EmailSection = () => {
             <p>
               <span className="font-semibold text-white">Email:</span> lokeshwar_v@yahoo.com
             </p>
-            <p>
-              <span className="font-semibold text-white">Phone:</span> +91 9578692037
-            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-semibold text-white">Phone:</span>
+              {!isPhoneVisible ? (
+                <button
+                  type="button"
+                  onClick={() => setIsPhoneVisible(true)}
+                  aria-expanded={isPhoneVisible}
+                  className="rounded-full border border-slate-500/50 bg-slate-800/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200 transition hover:border-sky-300/60 hover:text-sky-100"
+                >
+                  Tap To Reveal
+                </button>
+              ) : (
+                <a
+                  href="tel:+919578692037"
+                  className="animate-pulse rounded-full border border-emerald-400/45 bg-emerald-400/10 px-3 py-1 text-sm font-medium text-emerald-200 shadow-[0_0_20px_rgba(16,185,129,0.25)] transition hover:border-emerald-300/70 hover:text-emerald-100"
+                >
+                  +91 95786 92037
+                </a>
+              )}
+            </div>
             <p>
               <span className="font-semibold text-white">Location:</span> Chennai, India
             </p>
