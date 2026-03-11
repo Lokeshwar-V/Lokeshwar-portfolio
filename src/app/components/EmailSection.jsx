@@ -84,6 +84,7 @@ const EmailSection = () => {
             <Link
               href="https://github.com/Lokeshwar-V"
               target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-slate-600/60 px-4 py-2 text-sm text-slate-200 transition hover:border-secondary-400"
             >
               GitHub
@@ -91,6 +92,7 @@ const EmailSection = () => {
             <Link
               href="https://www.linkedin.com/in/lokeshwar-v-017a1b142/"
               target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-slate-600/60 px-4 py-2 text-sm text-slate-200 transition hover:border-secondary-400"
             >
               LinkedIn
